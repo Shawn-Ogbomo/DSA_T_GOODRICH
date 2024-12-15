@@ -1,0 +1,32 @@
+R-1.1 Which of the following is not a valid C++ variable name? (There may be
+more than one.)
+a. i_think_i_am_valid
+b. i_may_have_2_many_digits_2_be_valid
+c. I_start_and_end_with_underscores
+d. I_Have_A_Dollar_$ign
+e. I AM_LONG_AND_HAVE_NO_LOWER_CASE_LETTERS
+
+answer: d 
+
+
+Write a pseudo-code description of a method for finding the smallest and
+largest numbers in an array of integers and compare that to a C++ function
+that would do the same thing.
+
+values  -5 -10 -4 -2 -1
+
+min = num[0]
+
+max = num[0]
+
+for int i = 1 ; i < sz_arr ++i
+
+    if min > next 
+        min = next 
+    end if 
+
+    if max < next 
+        max = next 
+    end if 
+
+end for
