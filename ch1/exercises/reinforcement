@@ -8,7 +8,6 @@ e. I AM_LONG_AND_HAVE_NO_LOWER_CASE_LETTERS
 
 answer: d 
 
-
 Write a pseudo-code description of a method for finding the smallest and
 largest numbers in an array of integers and compare that to a C++ function
 that would do the same thing.
@@ -30,3 +29,11 @@ for int i = 1 ; i < sz_arr ++i
     end if 
 
 end for
+
+
+R-1.4 What are the contents of string s after executing the following statements.
+    string s = "abc";
+string t = "cde";
+s += s + t[1] + s;
+
+"abcabcdabc"
