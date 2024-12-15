@@ -9,17 +9,50 @@ static auto is_multiple(long n, long m) -> bool
 	return !(n % m);
 }
 
+static auto skip_input() -> void
+{
+	std::cin.clear();
+	for (char c{}; std::cin >> c;)
+	{
+		if (std::isdigit(c))
+		{
+			std::cin.unget();
+			return;
+		}
+	}
+}
+
 int main()
 {
-	for (auto& val : { 6, 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 72, 78, 84, 90, 96,97,98,99,100,101,102 })
-	{
-		std::cout << val << " is ";
+	std::cout << "This program will check if your first value is a multiple of the second value.\n\n"
+		<< "Press ctrl+z to exit\n\n"
+		<< "Enter two values : ";
 
-		if (!is_multiple(val, 6))
+	while (true) try
+	{
+		std::cin.exceptions(std::istream::failbit);
+
+		for (auto val = 0, multiple = 0; std::cin >> val >> multiple; )
 		{
-			std::cout << "not ";
+			std::cout << val << " is ";
+
+			if (!is_multiple(val, multiple))
+			{
+				std::cout << "not ";
+			}
+
+			std::cout << "a multiple of " << multiple << "\n";
+		}
+	}
+	catch (const std::ios_base::failure& fail)
+	{
+		if (std::cin.eof())
+		{
+			std::cerr << "Exiting...\n";
+			return 1;
 		}
 
-		std::cout << "a multiple of " << 6 << "\n";
+		std::cerr << fail.what() << '\n';
+		skip_input();
 	}
 }
