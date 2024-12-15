@@ -3,7 +3,7 @@
 #include <cuchar>
 #include <iostream>
 
-static auto sum_up_to_n(int n) -> int
+static auto sum_to_n(int n) -> int
 {
 	auto result = 0;
 
@@ -17,5 +17,5 @@ static auto sum_up_to_n(int n) -> int
 
 int main()
 {
-	std::cout << sum_up_to_n(10);
+	std::cout << sum_to_n(10);
 }
