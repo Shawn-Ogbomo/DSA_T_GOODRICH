@@ -37,3 +37,27 @@ string t = "cde";
 s += s + t[1] + s;
 
 "abcabcdabc"
+
+R-1.5 Consider the expression y + 2 * z ++ < 3 - w / 5. Add parentheses
+to show the precise order of evaluation given the C++ rules for operator
+precedence.
+
+ y + (2 * z ++) < 3 - (w / 5)
+
+ R-1.6 Consider the following attempt to allocate a 10-element array of pointers
+ to doubles and initialize the associated double values to 0.0. Rewrite the
+ following (incorrect) code to do this correctly. (Hint: Storage for the
+ doubles needs to be allocated.)
+
+ R-1.10 What (if anything) is different about the behavior of the following two
+functions f and g that increment a variable and print its value?
+void f(int x)
+{
+    std::cout << ++x;
+}
+void g(int &x)
+{
+    std::cout << ++x;
+}
+
+answer : Yes.One functions target object is passed by value and the other by reference.The former denotes that the value is immaterial and the latter will be mutated.
