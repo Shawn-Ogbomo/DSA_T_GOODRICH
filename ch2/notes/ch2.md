@@ -2,12 +2,12 @@ _abstraction_: distilling a complex sysyem down to its
 most fundamental parts and describe these parts in a simple precise language.
 
 _abstract datatypes (ADT'S)_: a mathematical model
-of a data structure that specifies the type of the data stored, the operatrions supported on them and the types of parameters on the operations.
+of a data structure that specifies the type of the data stored, the operations supported on them and the types of parameters on the operations.
 Such model specifies what each operation does, but not
 how it does it.
 
 _Encapsulation_: states that different components of a
-software system should not reveal the internal details of their respective implementations. Encapsulation gives the programmer freedom in implementing the details of a system. The only constaint on the programmer is to maintain the abstract interface that outsiders see.
+software system should not reveal the internal details of their respective implementations. Encapsulation gives the programmer freedom in implementing the details of a system. The only constraint on the programmer is to maintain the abstract interface that outsiders see.
 
 _Modularity_: refers to an organizing principle for code in which different components of a software system are divided into separate units. Enables software reusability.
 
