@@ -7,6 +7,18 @@ static auto sum_to_n(int n) -> int
 {
 	auto result = 0;
 
+	if (n < 0)
+	{
+		n *= -1;
+
+		for (std::size_t i = 1; i < n; ++i)
+		{
+			result += i;
+		}
+
+		return result * (-1);
+	}
+
 	for (std::size_t i = 1; i < n; ++i)
 	{
 		result += i;
@@ -17,5 +29,7 @@ static auto sum_to_n(int n) -> int
 
 int main()
 {
-	std::cout << sum_to_n(10);
+	std::cout << sum_to_n(5);
+	std::cout << "\n";
+	std::cout << sum_to_n(-5);
 }
