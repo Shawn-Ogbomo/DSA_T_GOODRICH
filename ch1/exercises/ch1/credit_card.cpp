@@ -2,7 +2,7 @@
 
 #include "credit_card.hpp"
 
-CreditCard::CreditCard(const std::string& no, const std::string& nm, int lim, double bal)
+CreditCard::CreditCard(std::string_view no, std::string_view nm, int lim, double bal)
 	:number{ no },
 	name{ nm },
 	limit{ lim },
@@ -28,5 +28,5 @@ void CreditCard::makePayment(double payment)
 		return;
 	}
 
-	balance -= payment;
+	balance -= payment + (payment * (5.45 / 100));
 }

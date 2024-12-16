@@ -7,7 +7,7 @@
 class CreditCard
 {
 public:
-	CreditCard(const std::string& no, const std::string& nm, int lim, double bal = 0);
+	CreditCard(std::string_view no, std::string_view nm, int lim, double bal = 0);
 	friend std::ostream& operator<<(std::ostream& out, const CreditCard& c)
 	{
 		out << "Number = " << c.number << "\n"
@@ -16,6 +16,10 @@ public:
 			<< "Limit = " << c.limit << "\n";
 		return out;
 	}
+
+	bool chargeIt(double price);
+
+	void makePayment(double payment);
 
 	std::string getNumber() const
 	{
@@ -37,9 +41,6 @@ public:
 		return limit;
 	}
 
-	bool chargeIt(double price);
-
-	void makePayment(double payment);
 private:
 	std::string number;
 	std::string name;
