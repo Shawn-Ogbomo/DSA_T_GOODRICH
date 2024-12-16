@@ -28,5 +28,5 @@ void CreditCard::makePayment(double payment)
 		return;
 	}
 
-	balance -= payment + (payment * (5.45 / 100));
+	balance -= payment - (payment * (5.45 / 100));
 }
