@@ -37,7 +37,7 @@ static void testCard() {
 
 	std::cout << "Card payments:\n";
 
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 3; ++i)
 	{
 		std::cout << *wallet[i];
 
