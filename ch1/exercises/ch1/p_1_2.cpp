@@ -274,11 +274,15 @@ static auto display_calendar(std::string& starting_day, int yy) -> void
 	}
 }
 
-auto main() -> int
+static auto greeting() -> void
 {
 	std::cout << "Enter a starting day Sun-Sat and a year .\n"
-		<< "This program will generate a calendar for the year based on the starting day. Press ctrl+z to exit...\n\n";
+		<< "This program will generate a calendar for the year based on the starting day. \nPress ctrl+z to exit...\n\n";
+}
 
+auto main() -> int
+{
+	greeting();
 	std::cin.exceptions(std::istream::failbit);
 
 	while (true) try
