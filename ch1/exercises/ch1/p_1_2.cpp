@@ -29,6 +29,151 @@ static auto operator++(Day& d)->Day&
 	return d = static_cast<Day>(static_cast<int>(d) + 1);
 }
 
+static auto string_to_day(std::string& s) -> Day
+{
+	s[0] = static_cast<char>(std::toupper(s[0]));
+
+	if (s == "Sunday")
+	{
+		return Day::sun;
+	}
+
+	if (s == "Monday")
+	{
+		return Day::mon;
+	}
+
+	if (s == "Tuesday")
+	{
+		return Day::tue;
+	}
+
+	if (s == "Wednesday")
+	{
+		return Day::wed;
+	}
+
+	if (s == "Thursday")
+	{
+		return Day::thu;
+	}
+
+	if (s == "Friday")
+	{
+		return Day::fri;
+	}
+
+	if (s == "Saturday")
+	{
+		return Day::sat;
+	}
+
+	throw std::invalid_argument{ "Invalid day..." };
+}
+
+static auto day_10(std::size_t pos, std::ostream& os = std::cout) -> bool
+{
+	if (pos + 1 == 10)
+	{
+		os << std::setw(5) << pos + 1;
+		return true;
+	}
+
+	return false;
+}
+
+static auto week_day(Day d, std::size_t pos, std::ostream& os = std::cout) -> bool
+{
+	switch (d)
+	{
+	case Day::mon:
+	case Day::tue:
+	case Day::wed:
+	case Day::thu:
+	case Day::fri:
+	{
+		if (day_10(pos))
+		{
+			return true;
+		}
+
+		os << std::setw(4) << pos + 1;
+		return true;
+	}
+	default:
+		return false;
+	}
+}
+
+static auto weekend(Day d, std::size_t pos, std::ostream& os = std::cout) -> bool
+{
+	if (d == Day::sat)
+	{
+		if (day_10(pos))
+		{
+			std::cout << "\n";
+			return true;
+		}
+
+		os << std::setw(4) << pos + 1 << "\n";
+		return true;
+	}
+
+	if (d == Day::sun)
+	{
+		os << pos + 1;
+		return true;
+	}
+
+	return false;
+}
+
+static auto first_row(Day d, std::size_t pos, std::ostream& os = std::cout) -> bool
+{
+	if (!pos)
+	{
+		switch (d)
+		{
+		case Day::sun:
+			os << std::setw(0) << pos + 1;
+			return true;
+		case Day::mon:
+			os << std::setw(5) << pos + 1;
+			return true;
+		case Day::tue:
+			os << std::setw(9) << pos + 1;
+			return true;
+		case Day::wed:
+			os << std::setw(13) << pos + 1;
+			return true;
+		case Day::thu:
+			os << std::setw(17) << pos + 1;
+			return true;
+		case Day::fri:
+			os << std::setw(21) << pos + 1;
+			return true;
+		case Day::sat:
+			os << std::setw(25) << pos + 1 << "\n";
+			return true;
+		default:
+			throw std::invalid_argument{ "Invalid day..." };
+		}
+	}
+
+	return false;
+}
+
+static auto display_day(std::size_t pos, Day d) -> void
+{
+	if (first_row(d, pos))
+	{
+		return;
+	}
+
+	week_day(d, pos);
+	weekend(d, pos);
+}
+
 static auto leap_year(int yy) -> bool
 {
 	return (yy % 4 == 0) && (yy % 100 == 0) && (yy % 400 == 0)
@@ -108,151 +253,6 @@ static auto header(Month m) -> void
 		<< std::setw(27) << std::setfill('-') << "\n" << std::setfill(' ')
 		<< "Su" << std::setw(4) << "Mo" << std::setw(4) << "Tu" << std::setw(4) << "We" << std::setw(4)
 		<< "Th" << std::setw(4) << "Fr" << std::setw(4) << "Sa" << "\n";
-}
-
-static auto first_row(Day d, std::size_t pos, std::ostream& os = std::cout) -> bool
-{
-	if (!pos)
-	{
-		switch (d)
-		{
-		case Day::sun:
-			os << std::setw(0) << pos + 1;
-			return true;
-		case Day::mon:
-			os << std::setw(5) << pos + 1;
-			return true;
-		case Day::tue:
-			os << std::setw(9) << pos + 1;
-			return true;
-		case Day::wed:
-			os << std::setw(13) << pos + 1;
-			return true;
-		case Day::thu:
-			os << std::setw(17) << pos + 1;
-			return true;
-		case Day::fri:
-			os << std::setw(21) << pos + 1;
-			return true;
-		case Day::sat:
-			os << std::setw(25) << pos + 1 << "\n";
-			return true;
-		default:
-			throw std::invalid_argument{ "Invalid day..." };
-		}
-	}
-
-	return false;
-}
-
-static auto day_10(std::size_t pos, std::ostream& os = std::cout) -> bool
-{
-	if (pos + 1 == 10)
-	{
-		os << std::setw(5) << pos + 1;
-		return true;
-	}
-
-	return false;
-}
-
-static auto week_day(Day d, std::size_t pos, std::ostream& os = std::cout) -> bool
-{
-	switch (d)
-	{
-	case Day::mon:
-	case Day::tue:
-	case Day::wed:
-	case Day::thu:
-	case Day::fri:
-	{
-		if (day_10(pos))
-		{
-			return true;
-		}
-
-		os << std::setw(4) << pos + 1;
-		return true;
-	}
-	default:
-		return false;
-	}
-}
-
-static auto weekend(Day d, std::size_t pos, std::ostream& os = std::cout) -> bool
-{
-	if (d == Day::sat)
-	{
-		if (day_10(pos))
-		{
-			std::cout << "\n";
-			return true;
-		}
-
-		os << std::setw(4) << pos + 1 << "\n";
-		return true;
-	}
-
-	if (d == Day::sun)
-	{
-		os << pos + 1;
-		return true;
-	}
-
-	return false;
-}
-
-static auto display_day(std::size_t pos, Day d) -> void
-{
-	if (first_row(d, pos))
-	{
-		return;
-	}
-
-	week_day(d, pos);
-	weekend(d, pos);
-}
-
-static auto string_to_day(std::string& s) -> Day
-{
-	s[0] = static_cast<char>(std::toupper(s[0]));
-
-	if (s == "Sunday")
-	{
-		return Day::sun;
-	}
-
-	if (s == "Monday")
-	{
-		return Day::mon;
-	}
-
-	if (s == "Tuesday")
-	{
-		return Day::tue;
-	}
-
-	if (s == "Wednesday")
-	{
-		return Day::wed;
-	}
-
-	if (s == "Thursday")
-	{
-		return Day::thu;
-	}
-
-	if (s == "Friday")
-	{
-		return Day::fri;
-	}
-
-	if (s == "Saturday")
-	{
-		return Day::sat;
-	}
-
-	throw std::invalid_argument{ "Invalid day..." };
 }
 
 static auto display_calendar(std::string& starting_day, int yy) -> void
