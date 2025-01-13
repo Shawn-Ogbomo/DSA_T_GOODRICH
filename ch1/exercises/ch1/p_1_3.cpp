@@ -133,7 +133,7 @@ static auto generate_birthday() -> Birthday
 	auto year = random_val(1582, 2025);
 	auto day = days_in_month(mon, year);
 
-	return Birthday{ static_cast<int>(mon),day,year };
+	return Birthday{ static_cast<int>(mon),random_val(1,day),year };
 }
 
 auto main() -> int
