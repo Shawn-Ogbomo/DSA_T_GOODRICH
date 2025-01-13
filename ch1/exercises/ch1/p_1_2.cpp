@@ -84,13 +84,7 @@ static auto day_10(std::size_t pos, std::ostream& os = std::cout) -> bool
 
 static auto week_day(Day d, std::size_t pos, std::ostream& os = std::cout) -> bool
 {
-	switch (d)
-	{
-	case Day::mon:
-	case Day::tue:
-	case Day::wed:
-	case Day::thu:
-	case Day::fri:
+	if (d != Day::sat && d != Day::sun)
 	{
 		if (day_10(pos))
 		{
@@ -100,9 +94,8 @@ static auto week_day(Day d, std::size_t pos, std::ostream& os = std::cout) -> bo
 		os << std::setw(4) << pos + 1;
 		return true;
 	}
-	default:
-		return false;
-	}
+
+	return false;
 }
 
 static auto weekend(Day d, std::size_t pos, std::ostream& os = std::cout) -> bool
@@ -283,6 +276,7 @@ static auto greeting() -> void
 auto main() -> int
 {
 	greeting();
+
 	std::cin.exceptions(std::istream::failbit);
 
 	while (true) try
