@@ -17,6 +17,7 @@ static auto clear_punct(std::string& s) -> void
 			if (s[i] == punct_chars[j])
 			{
 				s[i] = '\0';
+				break;
 			}
 		}
 	}
