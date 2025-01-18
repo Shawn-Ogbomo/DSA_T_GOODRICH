@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std::literals;
 
-static auto clear_punct(std::string& s) -> bool
+static auto clear_punct(std::string& s) -> void
 {
 	static auto punct_chars = R"(!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~)"sv;
 	static auto sz = punct_chars.size();
@@ -20,8 +20,6 @@ static auto clear_punct(std::string& s) -> bool
 			}
 		}
 	}
-
-	return false;
 }
 
 auto main() -> int
