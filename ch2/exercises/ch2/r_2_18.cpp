@@ -31,7 +31,7 @@ auto main() -> int
 	auto p2 = Pair{ 'S',77.7 };
 	auto p3 = Pair{ "Shawn7"s,'*' };
 	auto p4 = Pair{ true,"True"sv };
-	auto p5 = Pair{ static_cast<float>(7.7), static_cast<long>(9) };
+	auto p5 = Pair{ 7.7f, 9L };
 
 	std::cout << p1 << p2 << p3 << p4 << p5;
 }
