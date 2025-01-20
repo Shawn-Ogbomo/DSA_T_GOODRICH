@@ -12,7 +12,7 @@ static auto clear_punct(std::string& s) -> void
 
 	for (size_t i = 0; i < sz_s; ++i)
 	{
-		for (size_t j = 0; j < sz; j++)
+		for (size_t j = 0; j < sz; ++j)
 		{
 			if (s[i] == punct_chars[j])
 			{
@@ -32,7 +32,7 @@ auto main() -> int
 
 		std::cin.exceptions(std::istream::failbit);
 
-		for (auto s = "?"s; std::cin >> s;)
+		for (auto s = ""s; std::cin >> s;)
 		{
 			clear_punct(s);
 			std::cout << s << "\n\n";
