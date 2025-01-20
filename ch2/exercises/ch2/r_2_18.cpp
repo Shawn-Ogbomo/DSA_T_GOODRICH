@@ -27,21 +27,11 @@ private:
 
 auto main() -> int
 {
-	std::cout << "Enter pairs...\nPress ctrl+z to exit...\n\n";
+	auto p1 = Pair{ 7,"Shawn"sv };
+	auto p2 = Pair{ 'S',77.7 };
+	auto p3 = Pair{ "Shawn7"s,'*' };
+	auto p4 = Pair{ true,"True"sv };
+	auto p5 = Pair{ static_cast<float>(7.7), static_cast<long>(9) };
 
-	try
-	{
-		auto p1 = Pair{ 7,"Shawn"sv };
-		auto p2 = Pair{ 'S',77.7 };
-		auto p3 = Pair{ "Shawn7"s,'*' };
-		auto p4 = Pair{ true,"True"sv };
-		auto p5 = Pair{ static_cast<float>(7.7), static_cast<long>(9) };
-
-		std::cout << p1 << p2 << p3 << p4 << p5;
-	}
-	catch (const std::ios_base::failure& fail)
-	{
-		std::cerr << fail.what() << "\n";
-		return 1;
-	}
+	std::cout << p1 << p2 << p3 << p4 << p5;
 }
